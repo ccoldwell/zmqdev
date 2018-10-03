@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+# This should go in /usr/local/bin to be in the path
+# this will launch a linux container and mount your code
+# at /src then drop you into that directory ready to go
+#
+# the valgrind helper is already installed as cval, so
+# once you have compiled you can run with valgrind thusly:
+# > cval <other valgrind options> <program>
+# cval starts with valgrind --leak-check=yes
+#
+
+docker run  \
+-v `pwd`:/src \
+-w /src \
+-l zmq/dev \
+-ti --rm zmq/dev bash
